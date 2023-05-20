@@ -1,0 +1,35 @@
+.body {
+   display: flex;
+   align-items: center;
+}
+
+
+.themeTitle {
+   cursor: pointer;
+   text-transform: uppercase;
+   font-weight: 700;
+   font-size: 13px;
+   line-height: 19px;
+   letter-spacing: 2.5px;
+   padding-right: 36px;
+   position: relative;
+   transition: color ease 0.3s;
+   &:after{
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+   }
+}
+.themeTitleLight{
+   &:hover {
+      color: #222731;
+   }
+}
+.themeTitleDark {
+   &:hover {
+      color: #90A4D4;
+   }
+}

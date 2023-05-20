@@ -1,0 +1,55 @@
+@import "./styles/vars.scss";
+@import "./styles/null.scss";
+@import "./styles/fonticons.css";
+
+
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:regular,700');
+
+
+body {
+   transition: ease all 0.3s;
+}
+
+body[data-theme='light'] {
+   color:$mainColorLight;
+   background-color: $bgColorLight;
+   input {
+      background-color: $elemColorLight;
+      color: $activeColorLight;
+      box-shadow: $elemShadowLight;
+   }
+   input::placeholder {
+      color: $mainColorLight;
+   }
+   // a {
+   //    color:$activeColorLight;
+   // }
+   button {
+      color: $bgColorLight;
+   }
+   section[data-stats=""] {
+      background-color: $statsElemLight;
+   }
+   main {
+      background-color: $elemColorLight;
+      box-shadow: $elemShadowLight;
+
+   }
+}
+body[data-theme='dark'] {
+   color:$mainColorDark;
+   background-color: $bgColorDark;
+   input {
+      color: $mainColorDark;
+      background-color: $elemColorDark;
+   }
+   input::placeholder {
+      color: $mainColorDark;
+   }
+   section[data-stats=""] {
+      background-color: $statsElemDark;
+   }
+   main {
+      background-color: $elemColorDark;
+   }
+}

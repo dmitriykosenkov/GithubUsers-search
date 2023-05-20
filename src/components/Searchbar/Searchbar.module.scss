@@ -1,0 +1,51 @@
+.searchSection {
+   position: relative;
+   display: flex;
+   margin-bottom: 24px;
+}
+
+.searchInput {
+   width: 100%;
+   border-radius: 15px;
+   font-size: 18px;
+   line-height: 25px;
+   padding: 22px 10px 22px 80px;
+   @media (max-width:550px){
+      padding: 17px 7px 17px 45px;
+        font-size: 13px;
+   }
+}
+.searchIcon {
+   position: absolute;
+   top: 50%;
+   transform: translate(0, -50%);
+   left: 32px;
+   z-index: 5px;
+   img {
+      @media (max-width:550px){
+         width: 20px;
+         height: 20px;
+   
+      }   
+   }
+   @media (max-width:550px){
+      left: 16px;
+
+   }
+}
+.searchBtn {
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 24px;
+   background: #0079ff;
+   border-radius: 10px;
+   position: absolute;
+   top: 50%;
+   transform: translate(0, -50%);
+   right: 10px;
+   @media (max-width:550px){
+      font-size: 14px;
+line-height: 21px;
+        right: 7px;
+   }
+}
