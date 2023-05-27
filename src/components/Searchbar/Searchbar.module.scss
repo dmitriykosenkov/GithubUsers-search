@@ -10,9 +10,9 @@
    font-size: 18px;
    line-height: 25px;
    padding: 22px 10px 22px 80px;
-   @media (max-width:550px){
+   @media (max-width: 550px) {
       padding: 17px 7px 17px 45px;
-        font-size: 13px;
+      font-size: 13px;
    }
 }
 .searchIcon {
@@ -22,15 +22,91 @@
    left: 32px;
    z-index: 5px;
    img {
-      @media (max-width:550px){
+      @media (max-width: 550px) {
          width: 20px;
          height: 20px;
-   
-      }   
+      }
    }
-   @media (max-width:550px){
+   @media (max-width: 550px) {
       left: 16px;
+   }
+}
 
+.loader {
+   color: rgba(130, 130, 130, 0.495);
+   font-size: 5px;
+   width: 1em;
+   height: 1em;
+   border-radius: 50%;
+   position: absolute;
+   top: 50%;
+   transform: translate(0, -50%);
+   right: 140px;
+   text-indent: -9999em;
+   animation: mulShdSpin 1.3s infinite linear;
+   transform: translateZ(0);
+ }
+ 
+ @keyframes mulShdSpin {
+   0%,
+   100% {
+     box-shadow: 0 -3em 0 0.2em, 
+     2em -2em 0 0em, 3em 0 0 -1em, 
+     2em 2em 0 -1em, 0 3em 0 -1em, 
+     -2em 2em 0 -1em, -3em 0 0 -1em, 
+     -2em -2em 0 0;
+   }
+   12.5% {
+     box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 
+     3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, 
+     -2em 2em 0 -1em, -3em 0 0 -1em, 
+     -2em -2em 0 -1em;
+   }
+   25% {
+     box-shadow: 0 -3em 0 -0.5em, 
+     2em -2em 0 0, 3em 0 0 0.2em, 
+     2em 2em 0 0, 0 3em 0 -1em, 
+     -2em 2em 0 -1em, -3em 0 0 -1em, 
+     -2em -2em 0 -1em;
+   }
+   37.5% {
+     box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+      3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, 
+      -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+   }
+   50% {
+     box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+      3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, 
+      -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+   }
+   62.5% {
+     box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+      3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, 
+      -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+   }
+   75% {
+     box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 
+     3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+     -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+   }
+   87.5% {
+     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 
+     3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+     -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+   }
+ }
+   
+.notFound {
+   position: absolute;
+   top: 50%;
+   transform: translate(0, -50%);
+   right: 140px;
+   color: #f74646;
+   font-weight: 700;
+   line-height: 22px;
+   @media (max-width: 550px) {
+      font-size: 13px;
+      right: 100px;
    }
 }
 .searchBtn {
@@ -43,9 +119,9 @@
    top: 50%;
    transform: translate(0, -50%);
    right: 10px;
-   @media (max-width:550px){
+   @media (max-width: 550px) {
       font-size: 14px;
-line-height: 21px;
-        right: 7px;
+      line-height: 21px;
+      right: 7px;
    }
 }

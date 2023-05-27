@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import exampleImage from "../../assets/Oval.jpg";
 
 import s from "./Main.module.scss";
@@ -20,11 +19,10 @@ const createDateStr = (value) => {
 };
 
 const Main = ({ user }) => {
-   console.log(user);
    const parsedDate = createDateStr(user.created_at);
-   // useEffect(() => {
-   //    parsedDate.current = createDateStr(user.created_at)
-   // }, [user]);
+   if (!user) {
+      return <div>LOADING....</div>
+   }
    return (
       <main className={s.mainSection}>
          <div className={s.avatar}>
@@ -37,7 +35,12 @@ const Main = ({ user }) => {
             <div className={s.descrInfo}>
                <div className={s.descrNameBlock}>
                   <h3 className={s.descrTitle}>{user.name || "The Octocat"}</h3>
-                  <a href="#" className={s.descrSubtitle}>
+                  <a
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     href={user.html_url}
+                     className={s.descrSubtitle}
+                  >
                      @{user.login || "octocat"}
                   </a>
                </div>
@@ -47,8 +50,7 @@ const Main = ({ user }) => {
             </div>
          </section>
          <div className={s.descrText}>
-            {user.bio ||
-               "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros."}
+            {user.bio}
          </div>
          <section
             data-stats=""
@@ -56,15 +58,15 @@ const Main = ({ user }) => {
          >
             <div className={s.statisticsColumn}>
                <div className={s.columnSubtitle}>Repos</div>
-               <div className={s.columnTitle}>{user.public_repos || "8"}</div>
+               <div className={s.columnTitle}>{user.public_repos || "0"}</div>
             </div>
             <div className={s.statisticsColumn}>
                <div className={s.columnSubtitle}>Followers</div>
-               <div className={s.columnTitle}>{user.followers || "3938"}</div>
+               <div className={s.columnTitle}>{user.followers || "0"}</div>
             </div>
             <div className={s.statisticsColumn}>
                <div className={s.columnSubtitle}>Following</div>
-               <div className={s.columnTitle}>{user.following || "9"}</div>
+               <div className={s.columnTitle}>{user.following || "0"}</div>
             </div>
          </section>
          <section className={s.social}>
@@ -77,42 +79,55 @@ const Main = ({ user }) => {
             >
                {user.location || "Not Available"}
             </div>
-            <a
-               target="_blank"
-               rel="noopener noreferrer"
-               href={`https://twitter.com/${user.twitter_username}`}
-               className={
-                  user.twitter_username
-                     ? `${s.socialItem} icon-twitter`
-                     : `${s.socialItem} icon-twitter ${s.social__not_available}`
-               }
-            >
-               {user.twitter_username || "Not Available"}
-            </a>
-            <a
-               target="_blank"
-               rel="noopener noreferrer"
-               href={user.blog}
-               className={
-                  user.blog
-                     ? `${s.socialItem} icon-website`
-                     : `${s.socialItem} icon-website ${s.social__not_available}`
-               }
-            >
-               {user.blog || "Not Available"}
-            </a>
-            <a
-               target="_blank"
-               rel="noopener noreferrer"
-               href={user.company}
-               className={
-                  user.company
-                     ? `${s.socialItem} icon-company`
-                     : `${s.socialItem} icon-company ${s.social__not_available}`
-               }
-            >
-               {user.company || "Not Available"}
-            </a>
+            <div>
+               {user.twitter_username ? (
+                  <a
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     href={`https://twitter.com/${user.twitter_username}`}
+                     className={`${s.socialItem} icon-twitter`}
+                  >
+                     {user.twitter_username}
+                  </a>
+               ) : (
+                  <p
+                     className={`${s.socialItem} icon-twitter ${s.social__not_available}`}
+                  >
+                     Not Available
+                  </p>
+               )}
+            </div>
+            <div>
+               {user.blog ? (
+                  <a
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     href={user.blog}
+                     className={`${s.socialItem} icon-website`}
+                  >
+                     {user.blog}
+                  </a>
+               ) : (
+                  <p
+                     className={`${s.socialItem} icon-website ${s.social__not_available}`}
+                  >
+                     Not Available
+                  </p>
+               )}
+            </div>
+            <div>
+               {user.company ? (
+                  <p className={`${s.socialItem} icon-company`}>
+                     {user.company}
+                  </p>
+               ) : (
+                  <p
+                     className={`${s.socialItem} icon-company ${s.social__not_available}`}
+                  >
+                     Not Available
+                  </p>
+               )}
+            </div>
          </section>
       </main>
    );
