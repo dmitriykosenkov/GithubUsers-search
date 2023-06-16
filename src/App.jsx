@@ -9,9 +9,9 @@ function App() {
    const [notFound, setNotFound] = useState({});
    const [loading, setLoading] = useState(false);
    const getUser = (searchTerm) => {
-      setNotFound({})
+      setNotFound({});
       const getData = async () => {
-         setLoading(true)
+         setLoading(true);
          const response = await fetch(
             `https://api.github.com/users/${searchTerm}`
          );
@@ -20,21 +20,22 @@ function App() {
       getData().then((data) => {
          if (data.login) {
             setUser(data);
-            setLoading(false)
+            setLoading(false);
          } else {
-            setNotFound(data)
+            setNotFound(data);
+            setLoading(false);
          }
       });
-   }
-  
+   };
+
    return (
       <div className={s.wrapper}>
          <div className={s.container}>
             <div className={s.body}>
                <Header />
                <Searchbar
-               loading={loading}
-               getUser={getUser}
+                  loading={loading}
+                  getUser={getUser}
                   notFound={notFound}
                />
                <Main user={user} />
