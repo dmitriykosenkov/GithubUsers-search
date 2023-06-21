@@ -2,6 +2,22 @@ import { useEffect, useState } from "react";
 import icon from "../../assets/icon-search.svg";
 
 import s from "./Searchbar.module.scss";
+import { Transition } from "react-transition-group";
+
+const duration = 200;
+
+const defaultStyle = {
+   transition: `all ${duration}ms ease-in-out`,
+   opacity: 0,
+   visibility: "hidden"
+};
+
+const transitionStyles = {
+   entering: { opacity: 1, visibility: "visible" },
+   entered: { opacity: 1, visibility: "visible" },
+   exiting: { opacity: 0, visibility: "hidden" },
+   exited: { opacity: 0, visibility: "hidden" },
+};
 
 const Searchbar = ({ notFound, getUser, loading }) => {
    const [value, setValue] = useState("");
@@ -28,7 +44,7 @@ const Searchbar = ({ notFound, getUser, loading }) => {
          clearTimeout(timerId);
       };
    }, [notFound]);
-   
+
    return (
       <section className={s.searchSection}>
          <div className={s.searchIcon}>
@@ -43,8 +59,26 @@ const Searchbar = ({ notFound, getUser, loading }) => {
             className={s.searchInput}
          />
          {loading && <div className={s.loader}>LOADING...</div>}
-         <span className={s.notFound}>{showNoResult && "No results"}</span>
-         <button onClick={onSubmit} className={s.searchBtn}>
+         <Transition in={showNoResult} timeout={duration} unmountOnExit>
+            {(state) => {
+               return (
+                  <span
+                     className={s.notFound}
+                     style={{
+                        ...defaultStyle,
+                        ...transitionStyles[state],
+                     }}
+                  >
+                     {showNoResult && "No results"}
+                  </span>
+               );
+            }}
+         </Transition>
+         <button
+            disabled={value === ""}
+            onClick={onSubmit}
+            className={s.searchBtn}
+         >
             Search
          </button>
       </section>
